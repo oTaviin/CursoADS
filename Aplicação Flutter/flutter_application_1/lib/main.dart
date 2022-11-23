@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Aplicativo Demo',
       //Cor do tema da aplicação.
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blueGrey,
       ),
       home: const MyHomePage(title: 'Página Inicial'),
     );
@@ -39,12 +39,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  //Este método é responsável por acrescentar o atributo _counter da aplicação.
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
   }
-
+  //Este método é responsável por decrementar o atributo _counter da aplicação.
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
 //Aplicação para contagem de clicques no botão de ação.
   @override
   Widget build(BuildContext context) {
@@ -66,10 +72,26 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      //Código para adicionar o botão de acrescentar e decrementar o contador da aplicação.
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          //Acrescentar
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Acrescentar',
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(
+            width: 10.0,
+          ),
+          //Decrementar
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            tooltip: 'Retirar',
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
